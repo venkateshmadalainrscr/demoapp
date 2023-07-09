@@ -1,0 +1,12 @@
+SELECT
+  first_name as FirstName, last_name as LastName, email as Email, mobile_number as MobileNo, trusted_user as Is_Trusted
+FROM
+  public.up_users
+WHERE
+  "username" ilike '%{{Table1.searchText}}%'
+ORDER BY
+  "{{Table1.sortOrder.column || 'id'}}" {{Table1.sortOrder.order !== "desc" ? "" : "DESC"}}
+LIMIT
+  {{Table1.pageSize}}
+OFFSET
+  {{Table1.pageOffset}}
